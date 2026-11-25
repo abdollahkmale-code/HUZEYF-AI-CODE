@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HUZEYF AI CODE</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #171717;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.logo span {
+  color: #2878ff;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+}
+
+.language {
+  background: #f2f2f2;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+main {
+  max-width: 750px;
+  margin: 100px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 34px;
+}
+
+.description {
+  color: #777;
+  line-height: 2;
+}
+
+textarea {
+  width: 100%;
+  height: 160px;
+  padding: 18px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  resize: vertical;
+  font-size: 16px;
+  outline: none;
+  margin-top: 30px;
+  font-family: Arial;
+}
+
+textarea:focus {
+  border-color: #2878ff;
+}
+
+.generate {
+  width: 100%;
+  margin-top: 15px;
+  padding: 17px;
+  border-radius: 12px;
+  background: #171717;
+  color: white;
+  font-size: 17px;
+}
+
+.generate:hover {
+  background: #2878ff;
+}
+
+.result {
+  display: none;
+  text-align: right;
+  margin-top: 30px;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 15px;
+  background: #fafafa;
+}
+
+footer {
+  text-align: center;
+  color: #999;
+  font-size: 12px;
+  margin-top: 100px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">HUZEYF <span>AI CODE</span></div>
+  <button class="language" onclick="changeLanguage()">
+    EN / FA
+  </button>
+</header>
+
+<main>
+  <h1 id="title">چی می‌خوای بسازی؟</h1>
+
+  <p class="description" id="desc">
+    ایده‌ات رو بنویس تا هوش مصنوعی برات کد برنامه‌نویسی تولید کنه.
+  </p>
+
+  <textarea id="prompt"
+    placeholder="مثلاً یک ماشین حساب حرفه‌ای بساز...">
+  </textarea>
+
+  <button class="generate" onclick="generateCode()" id="btn">
+    ✨ تولید کد
+  </button>
+
+  <div class="result" id="result">
+    <h3 id="resultTitle">درخواست شما</h3>
+    <p id="resultText"></p>
+  </div>
+</main>
+
+<footer>
+  HUZEYF AI CODE © 2026
+</footer>
+
+<script>
+let english = false;
+
+function changeLanguage() {
+  english = !english;
+
+  document.documentElement.lang =
+    english ? "en" : "fa";
+
+  document.documentElement.dir =
+    english ? "ltr" : "rtl";
+
+  document.getElementById("title").innerText =
+    english ? "What do you want to build?" :
+    "چی می‌خوای بسازی؟";
+
+  document.getElementById("desc").innerText =
+    english ? "Describe your idea and generate code with AI." :
+    "ایده‌ات رو بنویس تا هوش مصنوعی برات کد تولید کنه.";
+
+  document.getElementById("prompt").placeholder =
+    english ? "Build a professional calculator..." :
+    "مثلاً یک ماشین حساب حرفه‌ای بساز...";
+
+  document.getElementById("btn").innerText =
+    english ? "✨ Generate Code" : "✨ تولید کد";
+}
+
+function generateCode() {
+  const prompt = document.getElementById("prompt").value.trim();
+
+  if (!prompt) {
+    alert(english ? "Enter your request first!" :
+      "اول درخواستت رو بنویس!");
+    return;
+  }
+
+  document.getElementById("result").style.display = "block";
+
+  document.getElementById("resultText").innerText =
+    english ?
+    "Your request is ready. Connect the AI backend to generate code." :
+    "درخواستت ثبت شد. در مرحله بعد هوش مصنوعی را متصل می‌کنیم تا کد واقعی تولید شود.";
+
+  document.getElementById("resultTitle").innerText =
+    english ? "Your request" : "درخواست شما";
+}
+</script>
+
+</body>
+</html>
+
